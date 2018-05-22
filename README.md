@@ -43,7 +43,7 @@ Values
 
 |         Name        |    Requirement    |        Default       |                 Description             |
 |:--------------------|:-----------------:|:--------------------:|:----------------------------------------|
-| pathInImage | mandatory |    | The path in the pod that will mount to host path, for example the `VOLUME` name in your Dockerfile |
+| pathInImage | mandatory |    | The path in the pod that will mount to host path, for example the `VOLUME` in your Dockerfile |
 | hostPath | mandatory |    | The destination of the drop on host. For example the path your binary will be dropped into |
 | repository | mandatory |  | Docker image reposository |
 | tag | optional | latest  | Image tag |
