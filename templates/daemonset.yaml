@@ -1,0 +1,41 @@
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    {{- include "commonMeta" . | indent 4}}
+    {{- if .Values.component }}
+    component: {{ .Values.component }}
+    {{- end }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "fullname" . }}
+  template:
+    metadata:
+      name: {{ .Chart.Name }}
+      labels:
+        {{- include "commonMeta" . | indent 8 }}
+        {{- if .Values.component }}
+        component: {{ .Values.component }}
+        {{- end }}
+        app: {{ template "fullname" . }}
+    spec:
+      {{- if .Values.pullSecret }}
+      imagePullSecrets:
+      - name: {{ .Values.pullSecret }}
+      {{- end }}
+      containers:
+        - image: {{ required "image is required!" .Values.repository }}:{{ required "image tag is required!" .Values.tag }}
+          imagePullPolicy: {{ default "Always" .Values.pullPolicy }}
+          name: {{ .Chart.Name }}
+          securityContext:
+              privileged: true
+          volumeMounts:
+            - mountPath: {{ required "pathInImage is required!" .Values.pathInImage }}
+              name: file-vol
+      volumes:
+        - name: file-vol
+          hostPath:
+            path: {{ required "hostPath is required!" .Values.hostPath }}

@@ -1,0 +1,15 @@
+---
+name: filedrop
+version: 1.0.0
+description: File drop off to host for kubernetes cluster using Helm chart 
+keyworkds:
+  - kubernetes
+  - tools
+  - copy file
+  - drop 
+home: "https://github.com/liangrog/chart-filedrop"
+sources:
+  - "https://github.com/liangrog/chart-filedrop.git"
+maintainers:
+  - name: Roger Liang
+engine: gotpl

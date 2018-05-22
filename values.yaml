@@ -1,0 +1,23 @@
+---
+
+# Image and version
+repository: 
+tag:
+
+# Image pull secret if private
+pullSecret:
+
+# Image pull policy. Recommand Always 
+# so always get the latest file
+pullPolicy: 
+
+# component. Label the daemonset to 
+# indicate what component the file is
+component: 
+
+# The path in the image  
+pathInImage:
+
+# The host path that the file dropping to
+hostPath:
+
